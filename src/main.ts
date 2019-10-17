@@ -1,10 +1,14 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import "reflect-metadata";
+import 'reflect-metadata';
 
+import { NestFactory } from '@nestjs/core';
+
+import { AppModule } from './app.module';
+
+import dotenvFlow = require('dotenv-flow');
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+	dotenvFlow.config();
+	const app = await NestFactory.create(AppModule);
+	await app.listen(3000);
 }
 bootstrap();
