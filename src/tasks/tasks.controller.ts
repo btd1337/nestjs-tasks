@@ -9,11 +9,9 @@ import {
 	Patch,
 	Post,
 	Query,
-	UseGuards,
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 
 import { CreateTaskDto } from '../DTO/create-task.DTO';
 import { GetTasksFiltersDto } from '../DTO/get-task-filter.dto';
