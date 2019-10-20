@@ -1,4 +1,3 @@
-import { User } from './user.entity';
 import {
   BaseEntity,
   Entity,
