@@ -31,7 +31,6 @@ export class TaskRepository extends Repository<Task> {
 		task.description = description;
 		task.status = TaskStatus.IN_PROGRESS;
 		await task.save();
-
 		delete task.user;
 
 		return task;

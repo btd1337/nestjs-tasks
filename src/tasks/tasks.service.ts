@@ -13,14 +13,17 @@ export class TasksService {
 		@InjectRepository(TaskRepository)
 		private taskRepository: TaskRepository,
 	) {}
+
 	async getTasks(filterDto: GetTasksFiltersDto, user: User): Promise<Task[]> {
 		return this.taskRepository.getTasks(filterDto, user);
 	}
+
 	async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
 		return this.taskRepository.createTask(createTaskDto, user);
 	}
+
 	async getTaskById(id: number, user: User): Promise<Task> {
-		const found = this.taskRepository.findOne({
+		const found = await this.taskRepository.findOne({
 			where: { id, userId: user.id },
 		});
 		if (!found) {
