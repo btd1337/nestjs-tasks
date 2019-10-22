@@ -21,4 +21,19 @@ export class Task extends BaseEntity {
 
 	@Column()
 	userId: number;
+
+	constructor(
+		title: string,
+		description: string,
+		status: TaskStatus,
+		userId: number,
+		id?: number,
+	) {
+		super();
+		this.id = id ? id : undefined;
+		this.title = title;
+		this.description = description;
+		this.status = status;
+		this.userId = userId;
+	}
 }

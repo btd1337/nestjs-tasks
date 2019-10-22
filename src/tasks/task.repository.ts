@@ -25,11 +25,7 @@ export class TaskRepository extends Repository<Task> {
 	}
 	async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
 		const { title, description } = createTaskDto;
-		const task = new Task();
-		task.title = title;
-		task.user = user;
-		task.description = description;
-		task.status = TaskStatus.IN_PROGRESS;
+		const task = new Task(title, description, TaskStatus.IN_PROGRESS, user.id);
 		await task.save();
 		delete task.user;
 
