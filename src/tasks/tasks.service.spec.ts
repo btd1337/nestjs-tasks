@@ -1,7 +1,7 @@
 import { mockDeleteResult } from './../utils/test.utils';
-import { Test } from '@nestjs/testing';
+import { Test, TestingModule } from '@nestjs/testing';
 
-import { GetTasksFiltersDto } from '../DTO/get-task-filter.dto';
+import { GetTasksFiltersDto } from '../dtos/get-task-filter.dto';
 import { TaskStatus } from './task-status.enum';
 import { TaskRepository } from './task.repository';
 import { TasksService } from './tasks.service';
@@ -34,7 +34,7 @@ describe('TasksService', () => {
 	let taskRepository: TaskRepository;
 
 	beforeEach(async () => {
-		const module = await Test.createTestingModule({
+		const module: TestingModule = await Test.createTestingModule({
 			providers: [
 				TasksService,
 				{
@@ -44,8 +44,8 @@ describe('TasksService', () => {
 			],
 		}).compile();
 
-		tasksService = await module.get<TasksService>(TasksService);
-		taskRepository = await module.get<TaskRepository>(TaskRepository);
+		tasksService = module.get<TasksService>(TasksService);
+		taskRepository = module.get<TaskRepository>(TaskRepository);
 	});
 
 	describe('getTasks', () => {
